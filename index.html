@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predicting Childrens' Height</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Predicting Childrens' Height">
+  <meta name="author" content="JL">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Predicting Childrens' Height</h1>
+    <h2>Developing Data Products Deck</h2>
+    <p>JL<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Overview</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This deck aims to research on the impact of parents&#39; heights and children&#39;s gender on the children&#39;s heights.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Source Data and Tools</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Source Data: dataset GaltonFamilies in the HistData R package</p>
+
+<p>Tools: shiny to build data product application and slidify to create decks</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(HistData)
+data(GaltonFamilies)
+summary(GaltonFamilies)
+</code></pre>
+
+<pre><code>##      family        father         mother      midparentHeight
+##  185    : 15   Min.   :62.0   Min.   :58.00   Min.   :64.40  
+##  066    : 11   1st Qu.:68.0   1st Qu.:63.00   1st Qu.:68.14  
+##  120    : 11   Median :69.0   Median :64.00   Median :69.25  
+##  130    : 11   Mean   :69.2   Mean   :64.09   Mean   :69.21  
+##  166    : 11   3rd Qu.:71.0   3rd Qu.:65.88   3rd Qu.:70.14  
+##  097    : 10   Max.   :78.5   Max.   :70.50   Max.   :75.43  
+##  (Other):865                                                 
+##     children         childNum         gender     childHeight   
+##  Min.   : 1.000   Min.   : 1.000   female:453   Min.   :56.00  
+##  1st Qu.: 4.000   1st Qu.: 2.000   male  :481   1st Qu.:64.00  
+##  Median : 6.000   Median : 3.000                Median :66.50  
+##  Mean   : 6.171   Mean   : 3.586                Mean   :66.75  
+##  3rd Qu.: 8.000   3rd Qu.: 5.000                3rd Qu.:69.70  
+##  Max.   :15.000   Max.   :15.000                Max.   :79.00  
+## 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">lm(childHeight ~ father + mother + gender, data=GaltonFamilies)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = childHeight ~ father + mother + gender, data = GaltonFamilies)
+## 
+## Coefficients:
+## (Intercept)       father       mother   gendermale  
+##     16.5212       0.3928       0.3176       5.2150
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>To show the impact of parents&#39; height and children&#39; gender, an application has been developed and deployed at <a href="https://jiayuliu.shinyapps.io/shiny_apps_1/">https://jiayuliu.shinyapps.io/shiny_apps_1/</a>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Overview'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Source Data and Tools'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Model'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Application'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,0 +1,52 @@
+---
+title       : Predicting Childrens' Height
+subtitle    : Developing Data Products Deck
+author      : JL
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Overview
+
+This deck aims to research on the impact of parents' heights and children's gender on the children's heights.
+
+--- .class #id 
+
+## Source Data and Tools
+
+Source Data: dataset GaltonFamilies in the HistData R package
+
+Tools: shiny to build data product application and slidify to create decks
+
+--- .class #id 
+
+## Data
+
+```{r}
+library(HistData)
+data(GaltonFamilies)
+summary(GaltonFamilies)
+```
+
+--- .class #id 
+
+## Model
+
+```{r}
+lm(childHeight ~ father + mother + gender, data=GaltonFamilies)
+```
+
+--- .class #id 
+
+## Application
+
+To show the impact of parents' height and children' gender, an application has been developed and deployed at https://jiayuliu.shinyapps.io/shiny_apps_1/.
+
+
+--- .class #id 
+
